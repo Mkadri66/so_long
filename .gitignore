@@ -3,3 +3,6 @@
 *.o
 .DS_Store
 .vscode/
+mlx
+minilibx-linux
+so_long
