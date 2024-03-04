@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:27:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/04 11:10:17 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/04 18:45:45 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(void)
 	void	*mlx_win;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1920, 1080, "Hello world!");
+	mlx_win = mlx_new_window(mlx, 700, 400, "Hello world!");
 	(void) mlx_win;
 	mlx_loop(mlx);
 }

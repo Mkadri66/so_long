@@ -6,10 +6,9 @@
 #    By: mkadri <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/28 14:12:47 by mkadri            #+#    #+#              #
-#    Updated: 2024/03/04 11:19:30 by mkadri           ###   ########.fr        #
+#    Updated: 2024/03/04 18:48:05 by mkadri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
 
 NAME = so_long
 
@@ -17,26 +16,26 @@ SRCS = main.c
 
 OBJS = $(SRCS:.c=.o)
 
-FLAGS = -Wall -Wextra -Werror
+CC = gcc
 
-ifeq ($(shell uname), Linux)
-	INCLUDES = -I/usr/include -Imlx
-else
-	INCLUDES = -I/opt/X11/include -Imlx
+CFLAGS = -Wall -Wextra -Werror
+
+LDFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+
+UNAME := $(shell uname)
+
+ifeq ($(UNAME), Linux)
+    CFLAGS += -Imlx -I/usr/X11/include
+    LDFLAGS += -L/usr/X11/lib -lX11 -lXext
 endif
- 
-MLX_DIR = ./mlx
-MLX_LIB = $(MLX_DIR)/libmlx_$(UNAME).a
-ifeq ($(shell uname), Linux)
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/lib/X11 -lXext -lX11
-else
-	MLX_FLAGS = -Lmlx -lmlx -L/usr/X11/lib -lXext -lX11 -framework OpenGL -framework AppKit
-endif
- 
-all: $(NAME)
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
-	cc $(FLAGS) -o $(NAME) $(OBJS) $(MLX_FLAGS)
+	$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
+
+all: $(NAME)
 
 clean:
 	rm -f $(OBJS)
@@ -46,7 +45,5 @@ fclean: clean
 
 re: fclean all
 
-.c.o:
-	cc $(FLAGS) -c $< -o $(<:.c=.o) $(INCLUDES)
-
 .PHONY: all clean fclean re
+
