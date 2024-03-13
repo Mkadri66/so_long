@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 16:24:51 by mkadri            #+#    #+#             */
-/*   Updated: 2023/10/07 14:09:34 by mkadri           ###   ########.fr       */
+/*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
+/*   Updated: 2024/03/13 15:49:11 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef SO_LONG_H
+# define SO_LONG_H
 
-int	ft_isdigit(int c)
-{
-	if ((c >= 48 && c <= 57))
-	{
-		return (1);
-	}
-	return (0);
-}
+#include "../mlx/mlx.h"
+#include "../get_next_line/get_next_line.h"
+#include <stdlib.h>
+#include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
 
-/*
-int	main()
+typedef struct t_map
 {
-	printf("%d \n", ft_isdigit(8));
-	printf("%d \n", isdigit(8));
-	return(0);
-}
-*/
+	int		fd;
+	char	**map;
+	
+	
+} t_map;
+
+int		verify_map_extension(char *map_path);
+int		verif_args(int argc, char *path_map);
+int		parsing_map(char *argv);
+
+#endif

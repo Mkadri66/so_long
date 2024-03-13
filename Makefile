@@ -1,26 +1,14 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: mkadri <marvin@42.fr>                      +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/02/28 14:12:47 by mkadri            #+#    #+#              #
-#    Updated: 2024/03/04 18:48:05 by mkadri           ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
-
 NAME = so_long
 
-SRCS = main.c
+SRCS = main.c ./libs/*c get_next_line/*c
 
 OBJS = $(SRCS:.c=.o)
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -I./get_next_line
 
-LDFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit
+LDFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit -L./get_next_line 
 
 UNAME := $(shell uname)
 
@@ -46,4 +34,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-

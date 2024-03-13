@@ -1,33 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   verif_args.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/19 14:15:55 by mkadri            #+#    #+#             */
-/*   Updated: 2023/10/19 15:44:21 by mkadri           ###   ########.fr       */
+/*   Created: 2024/03/11 16:18:49 by mkadri            #+#    #+#             */
+/*   Updated: 2024/03/11 16:39:24 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-char	*ft_strdup(const char *str)
+int	verif_args(int argc, char *path_map)
 {
-	char	*str_copy;
-	int		str_size;
-	int		i;
-
-	i = 0;
-	str_size = ft_strlen(str);
-	str_copy = (char *) malloc ((str_size + 1) * sizeof(char));
-	if (!str || !str_copy)
-		return (NULL);
-	while (str[i] != '\0')
+	if(argc == 2)
 	{
-		str_copy[i] = str[i];
-		i++;
+		verify_map_extension(path_map);
+		return(1);
 	}
-	str_copy[i] = '\0';
-	return (str_copy);
+	else {
+		perror("Please enter only two arguments : ./so_long + map path");
+		return(0);
+	}		
 }
