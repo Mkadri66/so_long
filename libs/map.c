@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_verifier.c                                     :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/13 14:06:45 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/15 00:24:46 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,20 +37,40 @@ int	verify_map_extension(char *map_path)
 		}
 		return(1);
 }
-
-int	parsing_map(char *argv)
+int	count_lines(char *argv)
 {
-
-	char 	*line;
+	char	*line;
 	int	   	fd;
+	int 	count_line;
 	
+	count_line = 0;
 	fd = open(argv, O_RDONLY);
 	if(fd < 0)
 		return (0);
     while ((line = get_next_line(fd)) != NULL) {
-        printf("%s\n", line);
-        free(line); // N'oubliez pas de libérer la mémoire allouée par get_next_line
+        count_line++;
+        free(line);   
     }
-	close(fd); 
-	return(0);
+	close(fd);
+	return(count_line);
+}
+char	**parsing_map(char *argv)
+{
+	char	**map_parsed;
+	int		i;
+	char	*line;
+	int		fd;
+
+	map_parsed = (char **) malloc(sizeof(char*) * (count_lines(argv) + 1));
+	i = 0; 
+	fd = open(argv, O_RDONLY);
+	if(fd < 0)
+		return (0);
+	while ((line = get_next_line(fd) != NULL)) {
+        map_parsed[i] = get_next_line(fd);
+        free(line);
+		i++;
+    }
+	map_parsed[i] = '\0';
+	return(map_parsed);
 }

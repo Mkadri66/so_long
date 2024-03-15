@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/13 15:49:11 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/14 00:14:36 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct t_map
 
 int		verify_map_extension(char *map_path);
 int		verif_args(int argc, char *path_map);
-int		parsing_map(char *argv);
+char	**parsing_map(char *argv);
+int		count_lines(char *argv);
 
 #endif
