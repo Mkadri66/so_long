@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/15 00:24:46 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/18 15:02:11 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,11 @@ char	**parsing_map(char *argv)
 	fd = open(argv, O_RDONLY);
 	if(fd < 0)
 		return (0);
-	while ((line = get_next_line(fd) != NULL)) {
+	while (i < count_lines(argv)) {
         map_parsed[i] = get_next_line(fd);
         free(line);
 		i++;
     }
-	map_parsed[i] = '\0';
+	map_parsed[i] = NULL;
 	return(map_parsed);
 }
