@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/18 15:02:11 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:58:38 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,40 +37,42 @@ int	verify_map_extension(char *map_path)
 		}
 		return(1);
 }
-int	count_lines(char *argv)
+int	count_lines(char *argv, t_game *game)
 {
 	char	*line;
-	int	   	fd;
-	int 	count_line;
 	
-	count_line = 0;
-	fd = open(argv, O_RDONLY);
-	if(fd < 0)
+	game->map_height = 0;
+	game->fd = open(argv, O_RDONLY);
+	if(game->fd < 0)
 		return (0);
-    while ((line = get_next_line(fd)) != NULL) {
-        count_line++;
+    while ((line = get_next_line(game->fd)) != NULL) {
+        game->map_height++;
         free(line);   
     }
-	close(fd);
-	return(count_line);
+	close(game->fd);
+	return(game->map_height);
 }
-char	**parsing_map(char *argv)
+char	**parsing_map(char *argv, t_game *game)
 {
-	char	**map_parsed;
-	int		i;
 	char	*line;
-	int		fd;
+	int		i;
 
-	map_parsed = (char **) malloc(sizeof(char*) * (count_lines(argv) + 1));
-	i = 0; 
-	fd = open(argv, O_RDONLY);
-	if(fd < 0)
-		return (0);
-	while (i < count_lines(argv)) {
-        map_parsed[i] = get_next_line(fd);
-        free(line);
+	game->map = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+	if (!game->map)
+		return (NULL);
+	game->fd = open(argv, O_RDONLY);
+	if (game->fd < 0)
+		return (NULL);
+	i = 0;
+	while ((line = get_next_line(game->fd)) != NULL)
+	{
+		game->map[i] = ft_strdup(line);
+		printf("%s", game->map[i]); 
+		free(line);
 		i++;
-    }
-	map_parsed[i] = NULL;
-	return(map_parsed);
+	}
+	game->map[i] = NULL;
+	close(game->fd);
+	return (game->map);
 }
+

@@ -1,20 +1,27 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mkadri <marvin@42.fr>                      +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/03/18 16:05:49 by mkadri            #+#    #+#              #
+#    Updated: 2024/03/18 21:35:49 by mkadri           ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = so_long
-
 SRCS = main.c ./libs/*c get_next_line/*c
-
 OBJS = $(SRCS:.c=.o)
-
 CC = gcc
+CFLAGS = -Wall -Wextra -Werror -I./mlx -I/usr/X11/include
 
-CFLAGS = -Wall -Wextra -Werror -I./get_next_line
-
-LDFLAGS = -Lmlx -lmlx -framework OpenGL -framework AppKit -L./get_next_line 
+LDFLAGS = -Lmlx -lmlx -L./get_next_line -L/usr/X11/lib -lX11 -lXext
 
 UNAME := $(shell uname)
-
 ifeq ($(UNAME), Linux)
-    CFLAGS += -Imlx -I/usr/X11/include
-    LDFLAGS += -L/usr/X11/lib -lX11 -lXext
+    CFLAGS += -Imlx_linux -I/usr/X11/include
+    LDFLAGS += -L/usr/X11/lib -lX11 -lXext -lm
 endif
 
 %.o: %.c

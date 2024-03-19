@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:27:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/18 14:58:24 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/19 14:09:14 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,13 @@
 
 int	main(int argc, char **argv)
 {
-	int 	map_extension;
+	int 		map_extension;
+	t_game		game;
 
 	map_extension = verif_args(argc, argv[1]);
 	if(map_extension)
 	{
-		parsing_map(argv[1]);
+		ft_memset(&game, 0, sizeof(t_game));
+		parsing_map(argv[1], &game);
 	}
 }
