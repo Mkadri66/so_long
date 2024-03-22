@@ -15,11 +15,11 @@
 
 int	main(int argc, char **argv)
 {
-	int 		map_extension;
+	int			map_extension;
 	t_game		game;
 
 	map_extension = verif_args(argc, argv[1]);
-	if(map_extension)
+	if (map_extension)
 	{
 		ft_memset(&game, 0, sizeof(t_game));
 		parsing_map(argv[1], &game);

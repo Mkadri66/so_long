@@ -12,94 +12,94 @@
 
 #include "so_long.h"
 
-static int verify_is_map_rectangular(t_game *game)
+static	int	verify_is_map_rectangular(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while(i < game->map_height)
+	while (i < game->map_height)
 	{
-		if((ft_strlen(game->map[0]) - 1) == game->map_height)
+		if ((ft_strlen(game->map[0]) - 1) == game->map_height)
 		{
-			
 			perror("Map cannot be a square");
-			return(0);
+			return (0);
 		}
 		i++;
 	}
-	return(1);
+	return (1);
 }
 
-static int top_bottom_walls(t_game *game)
+static	int	top_bottom_walls(t_game *game)
 {
 	int	i;
 
 	i = 0;
-	while(game->map[0][i] != '\n')
+	while (game->map[0][i] != '\n')
 	{
-		if(game->map[0][i] != '1')
+		if (game->map[0][i] != '1')
 		{
-			
 			perror("Top map must only contain wall");
-			return(0);
+			return (0);
 		}
 		i++;
 	}
 	i = 0;
-	while(game->map[game->map_height - 1][i] != '\0')
+	while (game->map[game->map_height - 1][i] != '\0')
 	{
-		if(game->map[game->map_height - 1][i] != '1')
+		if (game->map[game->map_height - 1][i] != '1')
 		{
-			
 			perror("Bottom map must only contain wall");
-			return(0);
+			return (0);
 		}
 		i++;
 	}
-	return(1);
+	return (1);
 }
-static int body_map_walls(t_game *game)
+
+static	int	body_map_walls(t_game *game)
 {
 	int	i;
 	int	right_wall;
-	
+
 	i = 1;
 	right_wall = ft_strlen(game->map[1]) - 2;
-	while(i < game->map_height - 1)
+	while (i < game->map_height - 1)
 	{
-		if(game->map[i][0] != '1' || game->map[i][right_wall] != '1')
+		if (game->map[i][0] != '1' || game->map[i][right_wall] != '1')
 		{
 			perror("Body map must be surrounded by walls");
-			return(0);
+			return (0);
 		}
 		i++;
 	}
-	return(1);
+	return (1);
 }
+
 int	verify_map_extension(char *map_path)
 {
-		int i;
-		int j;
-		char *extension = ".ber";
-		
-		i = 0;
-		j = 0;
-		if(map_path[i] == '.')
-			i++;
-		while(map_path[i]!= '\0' && map_path[i + 1] != '.')
-			i++;
+	int		i;
+	int		j;
+	char	*extension;
+
+	i = 0;
+	j = 0;
+	extension = ".ber";
+	if (map_path[i] == '.')
 		i++;
-		while(map_path[i] != '\0')
+	while (map_path[i] != '\0' && map_path[i + 1] != '.')
+		i++;
+	i++;
+	while (map_path[i] != '\0')
+	{
+		if (map_path[i] != extension[j])
 		{
-			if(map_path[i] != extension[j])
-			{
-				write(1, "Wrong file extension", 21);
-				return(0);
-			}
-			i++;
-			j++;
+			write(1, "Wrong file extension", 21);
+			return (0);
 		}
-		return(1);
+		i++;
+		j++;
+	}
+	return (1);
 }
 
 char	**parsing_map(char *argv, t_game *game)
@@ -107,7 +107,7 @@ char	**parsing_map(char *argv, t_game *game)
 	char	*line;
 	int		i;
 
-	game->map = (char **)malloc(sizeof(char *) * (game->map_height + 1));
+	game->map = (char **) malloc(sizeof(char *) * (game->map_height + 1));
 	if (!game->map)
 		return (NULL);
 	game->fd = open(argv, O_RDONLY);
@@ -128,9 +128,9 @@ char	**parsing_map(char *argv, t_game *game)
 
 int	verify_map(t_game *game)
 {
-	if(!verify_is_map_rectangular(game))
-		return(0);
+	if (!verify_is_map_rectangular(game))
+		return (0);
 	top_bottom_walls(game);
 	body_map_walls(game);
-	return(1);
+	return (1);
 }

@@ -14,13 +14,14 @@
 
 int	verif_args(int argc, char *path_map)
 {
-	if(argc == 2)
+	if (argc == 2)
 	{
 		verify_map_extension(path_map);
-		return(1);
+		return (1);
 	}
-	else {
+	else
+	{
 		perror("Please enter only two arguments : ./so_long + map path");
-		return(0);
-	}		
+		return (0);
+	}
 }

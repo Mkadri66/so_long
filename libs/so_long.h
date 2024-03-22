@@ -13,23 +13,23 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../mlx/mlx.h"
-#include "../get_next_line/get_next_line.h"
-#include <stdlib.h>
-#include <unistd.h>
-#include <stdio.h>
-#include <fcntl.h>
+# include "../mlx/mlx.h"
+# include "../get_next_line/get_next_line.h"
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
 
 typedef struct t_game
 {
 	int		fd;
 	char	**map;
-	int 	map_width;
+	int		map_width;
 	int		map_height;
 	int		player_count;
 	int		collectable_count;
 	int		exit_count;
-} t_game;
+}	t_game;
 
 int		verify_map_extension(char *map_path);
 int		verif_args(int argc, char *path_map);
