@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:27:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/19 14:09:14 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/22 03:19:48 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ int	main(int argc, char **argv)
 	{
 		ft_memset(&game, 0, sizeof(t_game));
 		parsing_map(argv[1], &game);
+		verify_map(&game);
 	}
 }
