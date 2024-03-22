@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/22 03:29:29 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/22 03:40:47 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,35 @@ static int verify_is_map_rectangular(t_game *game)
 		{
 			
 			perror("Map cannot be a square");
+			return(0);
+		}
+		i++;
+	}
+	return(1);
+}
+
+static int top_bottom_walls(t_game *game)
+{
+	int	i;
+
+	i = 0;
+	while(game->map[0][i] != '\n')
+	{
+		if(game->map[0][i] != '1')
+		{
+			
+			perror("Top map must only contain wall");
+			return(0);
+		}
+		i++;
+	}
+	i = 0;
+	while(game->map[game->map_height - 1][i] != '\0')
+	{
+		if(game->map[game->map_height - 1][i] != '1')
+		{
+			
+			perror("Bottom map must only contain wall");
 			return(0);
 		}
 		i++;
@@ -84,5 +113,6 @@ int	verify_map(t_game *game)
 {
 	if(!verify_is_map_rectangular(game))
 		return(0);
+	top_bottom_walls(game);
 	return(1);
 }
