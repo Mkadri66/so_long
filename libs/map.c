@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/22 03:56:07 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/22 04:05:46 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static int body_map_walls(t_game *game)
 	
 	i = 1;
 	right_wall = ft_strlen(game->map[1]) - 2;
-	// printf("%c", game->map[1][right_wall]);
 	while(i < game->map_height - 1)
 	{
 		if(game->map[i][0] != '1' || game->map[i][right_wall] != '1')
