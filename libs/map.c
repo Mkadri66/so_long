@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/22 03:40:47 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/22 03:56:07 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,25 @@ static int top_bottom_walls(t_game *game)
 	}
 	return(1);
 }
-
+static int body_map_walls(t_game *game)
+{
+	int	i;
+	int	right_wall;
+	
+	i = 1;
+	right_wall = ft_strlen(game->map[1]) - 2;
+	// printf("%c", game->map[1][right_wall]);
+	while(i < game->map_height - 1)
+	{
+		if(game->map[i][0] != '1' || game->map[i][right_wall] != '1')
+		{
+			perror("Body map must be surrounded by walls");
+			return(0);
+		}
+		i++;
+	}
+	return(1);
+}
 int	verify_map_extension(char *map_path)
 {
 		int i;
@@ -114,5 +132,6 @@ int	verify_map(t_game *game)
 	if(!verify_is_map_rectangular(game))
 		return(0);
 	top_bottom_walls(game);
+	body_map_walls(game);
 	return(1);
 }
