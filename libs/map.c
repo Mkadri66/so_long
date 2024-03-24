@@ -6,13 +6,13 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/22 04:05:46 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/24 01:16:09 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static	int	verify_is_map_rectangular(t_game *game)
+int	verify_is_map_rectangular(t_game *game)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ static	int	verify_is_map_rectangular(t_game *game)
 	return (1);
 }
 
-static	int	top_bottom_walls(t_game *game)
+int	top_bottom_walls(t_game *game)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ static	int	top_bottom_walls(t_game *game)
 	return (1);
 }
 
-static	int	body_map_walls(t_game *game)
+int	body_map_walls(t_game *game)
 {
 	int	i;
 	int	right_wall;
@@ -102,6 +102,32 @@ int	verify_map_extension(char *map_path)
 	return (1);
 }
 
+int	map_content(t_game *game)
+{
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	while (game->map[i] != NULL)
+	{
+		j = 0;
+		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
+		{
+			if (game->map[i][j] != '1' && game->map[i][j] != '0'
+				&& game->map[i][j] != 'P'
+				&& game->map[i][j] != 'C' && game->map[i][j] != 'E')
+			{
+				perror("Map is incorrect (must contain only : 1,0,P,C,E)");
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
+}
+
 char	**parsing_map(char *argv, t_game *game)
 {
 	char	*line;
@@ -132,5 +158,6 @@ int	verify_map(t_game *game)
 		return (0);
 	top_bottom_walls(game);
 	body_map_walls(game);
+	map_content(game);
 	return (1);
 }
