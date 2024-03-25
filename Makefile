@@ -6,7 +6,7 @@
 #    By: mkadri <marvin@42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 16:05:49 by mkadri            #+#    #+#              #
-#    Updated: 2024/03/18 21:35:49 by mkadri           ###   ########.fr        #
+#    Updated: 2024/03/25 14:25:25 by mkadri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,7 @@ $(NAME): $(OBJS)
 all: $(NAME)
 
 clean:
-	rm -f $(OBJS)
+	rm -f *.o
 
 fclean: clean
 	rm -f $(NAME)
