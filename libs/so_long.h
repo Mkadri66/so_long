@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/22 03:21:31 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/25 02:09:07 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ char	**parsing_map(char *argv, t_game *game);
 void	*ft_memset(void *array, int value, size_t count);
 char	*ft_strdup(const char *str);
 int		verify_map(t_game *game);
+int		count_content(t_game *game);
+int		map_content(t_game *game);
+int		count_check(t_game *game);
+int		body_map_walls(t_game *game);
 
 #endif

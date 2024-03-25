@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/24 01:16:09 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/25 02:08:12 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	top_bottom_walls(t_game *game)
 		}
 		i++;
 	}
+	body_map_walls(game);
 	return (1);
 }
 
@@ -72,61 +73,10 @@ int	body_map_walls(t_game *game)
 		}
 		i++;
 	}
+	map_content(game);
 	return (1);
 }
 
-int	verify_map_extension(char *map_path)
-{
-	int		i;
-	int		j;
-	char	*extension;
-
-	i = 0;
-	j = 0;
-	extension = ".ber";
-	if (map_path[i] == '.')
-		i++;
-	while (map_path[i] != '\0' && map_path[i + 1] != '.')
-		i++;
-	i++;
-	while (map_path[i] != '\0')
-	{
-		if (map_path[i] != extension[j])
-		{
-			write(1, "Wrong file extension", 21);
-			return (0);
-		}
-		i++;
-		j++;
-	}
-	return (1);
-}
-
-int	map_content(t_game *game)
-{
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
-	while (game->map[i] != NULL)
-	{
-		j = 0;
-		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
-		{
-			if (game->map[i][j] != '1' && game->map[i][j] != '0'
-				&& game->map[i][j] != 'P'
-				&& game->map[i][j] != 'C' && game->map[i][j] != 'E')
-			{
-				perror("Map is incorrect (must contain only : 1,0,P,C,E)");
-				return (0);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (1);
-}
 
 char	**parsing_map(char *argv, t_game *game)
 {
@@ -157,7 +107,10 @@ int	verify_map(t_game *game)
 	if (!verify_is_map_rectangular(game))
 		return (0);
 	top_bottom_walls(game);
-	body_map_walls(game);
-	map_content(game);
+	
+	
+	
+	//printf("player %d, exit %d, collectables %d", game->player_count, game->exit_count, game->collectable_count);
+	
 	return (1);
 }
