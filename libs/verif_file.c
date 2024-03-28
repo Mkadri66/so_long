@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:49 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/25 01:29:57 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/28 01:47:02 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int	verify_map_extension(char *map_path)
     if (!valid_file)
     {
       perror("Invalid file extension\n");
-      return (0);
+      exit (1);
     }
     return (1);
 }
