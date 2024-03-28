@@ -12,43 +12,40 @@
 
 #include "so_long.h"
 
-int	verif_args(int argc, char *path_map)
+char *ft_strstr(char *str, char *to_find)
 {
-	if (argc == 2)
-	{
-		verify_map_extension(path_map);
-		return (1);
-	}
-	else
-	{
-		perror("Please enter only two arguments : ./so_long + map path");
-		return (0);
-	}
-}
+    int i;
+    int j;
 
+    i = 0;
+    while (str[i] != '\0')
+    {
+        j = 0;
+        while (to_find[j] == str[i + j])
+        {
+            if (to_find[j + 1] == '\0')
+            {
+                return (str + i);
+            }
+            j++;
+        }
+        i++;
+    }
+    return (0);
+}
 int	verify_map_extension(char *map_path)
 {
-	int		i;
-	int		j;
-	char	*extension;
+    int		i;
+    char	*extension;
+    char	*valid_file;
 
-	i = 0;
-	j = 0;
-	extension = ".ber";
-	if (map_path[i] == '.')
-		i++;
-	while (map_path[i] != '\0' && map_path[i + 1] != '.')
-		i++;
-	i++;
-	while (map_path[i] != '\0')
-	{
-		if (map_path[i] != extension[j])
-		{
-			write(1, "Wrong file extension", 21);
-			return (0);
-		}
-		i++;
-		j++;
-	}
-	return (1);
+    i = 0;
+    extension = ".ber";
+    valid_file = ft_strstr(map_path, extension);
+    if (!valid_file)
+    {
+      perror("Invalid file extension\n");
+      return (0);
+    }
+    return (1);
 }

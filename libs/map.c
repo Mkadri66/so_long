@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/25 02:08:12 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/28 01:27:49 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	verify_is_map_rectangular(t_game *game)
 		if ((ft_strlen(game->map[0]) - 1) == game->map_height)
 		{
 			perror("Map cannot be a square");
-			return (0);
+			exit(0);
 		}
 		i++;
 	}
@@ -39,7 +39,7 @@ int	top_bottom_walls(t_game *game)
 		if (game->map[0][i] != '1')
 		{
 			perror("Top map must only contain wall");
-			return (0);
+			exit(1);
 		}
 		i++;
 	}
@@ -49,7 +49,7 @@ int	top_bottom_walls(t_game *game)
 		if (game->map[game->map_height - 1][i] != '1')
 		{
 			perror("Bottom map must only contain wall");
-			return (0);
+			exit(1);
 		}
 		i++;
 	}
@@ -69,7 +69,7 @@ int	body_map_walls(t_game *game)
 		if (game->map[i][0] != '1' || game->map[i][right_wall] != '1')
 		{
 			perror("Body map must be surrounded by walls");
-			return (0);
+			exit(1);
 		}
 		i++;
 	}
@@ -96,6 +96,11 @@ char	**parsing_map(char *argv, t_game *game)
 		free(line);
 		i++;
 	}
+	if(!game->map)
+	{
+		free(game);
+		return(0);
+	}
 	game->map_height = i;
 	game->map[i] = NULL;
 	close(game->fd);
@@ -105,12 +110,14 @@ char	**parsing_map(char *argv, t_game *game)
 int	verify_map(t_game *game)
 {
 	if (!verify_is_map_rectangular(game))
+	{
 		return (0);
+	}
 	top_bottom_walls(game);
+	map_content(game);
 	
 	
-	
-	//printf("player %d, exit %d, collectables %d", game->player_count, game->exit_count, game->collectable_count);
+	printf("player %d, exit %d, collectables %d \n", game->player_count, game->exit_count, game->collectable_count);
 	
 	return (1);
 }

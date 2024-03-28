@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 01:14:54 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/25 02:08:25 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/03/28 01:30:42 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,13 @@ int	count_content(t_game *game)
 
 	i = 0;
 	j = 0;
+	game->player_count = 0;
+	game->collectable_count = 0;
+	game->exit_count = 0;
 	while (game->map[i] != NULL)
 	{
 		j = 0;
-		while (game->map[i][j] != '\n' && game->map[i][j] != '\0')
+		while (game->map[i][j] != '\0')
 		{
 			if (game->map[i][j] == 'P')
 				game->player_count++;
@@ -70,7 +73,7 @@ int	count_check(t_game *game)
 	if(!(game->player_count == 1 && game->exit_count == 1 && game->collectable_count >= 1))
 	{
 		perror("Map is incorrect");
-		return(0);
+		exit(1);
 	}
 	return (1);
 }
