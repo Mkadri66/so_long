@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:27:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/28 01:30:11 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/02 23:38:26 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,6 @@ int	main(int argc, char **argv)
 	verify_map_extension(argv[1]);
 	parsing_map(argv[1], &game);
 	verify_map(&game);
+	game_init(&game);
 	return(0);
 }

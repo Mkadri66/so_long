@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/28 01:27:49 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/03 00:52:04 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int	verify_is_map_rectangular(t_game *game)
 		}
 		i++;
 	}
+	game->map_width = ft_strlen(game->map[0]) - 1;
 	return (1);
 }
 
@@ -115,9 +116,5 @@ int	verify_map(t_game *game)
 	}
 	top_bottom_walls(game);
 	map_content(game);
-	
-	
-	printf("player %d, exit %d, collectables %d \n", game->player_count, game->exit_count, game->collectable_count);
-	
 	return (1);
 }
