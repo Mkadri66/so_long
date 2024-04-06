@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:49 by mkadri            #+#    #+#             */
-/*   Updated: 2024/03/28 01:47:02 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/06 04:01:02 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ char *ft_strstr(char *str, char *to_find)
 }
 int	verify_map_extension(char *map_path)
 {
-    int		i;
     char	*extension;
     char	*valid_file;
 
-    i = 0;
     extension = ".ber";
     valid_file = ft_strstr(map_path, extension);
     if (!valid_file)

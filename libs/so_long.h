@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/02 14:30:18 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/06 03:46:40 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int		map_content(t_game *game);
 int		count_check(t_game *game);
 int		body_map_walls(t_game *game);
 
-void    game_init(t_game *game);
+void	game_init(t_game *game);
+int	game_controls(int key, t_game *game);
 
 #endif

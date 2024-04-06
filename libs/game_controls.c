@@ -1,30 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   game_controls.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/29 18:27:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/06 03:52:16 by mkadri           ###   ########.fr       */
+/*   Created: 2024/04/06 03:42:54 by mkadri            #+#    #+#             */
+/*   Updated: 2024/04/06 04:15:01 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
+#include <X11/keysym.h>
 
-#include "./libs/so_long.h"
-#include "get_next_line/get_next_line.h"
-
-int	main(int argc, char **argv)
+int	exit_game(int key, t_game *game)
 {
-	t_game		game;
+	int	i;
 
-	if (argc != 2)
-		return (0);
-	verify_map_extension(argv[1]);
-	parsing_map(argv[1], &game);
-	verify_map(&game);
-	game_init(&game);
-	mlx_key_hook(game.mlx_win_pointer, game_controls, &game);
-	mlx_loop(game.mlx_pointer);
+	i = 0;
+	mlx_destroy_window(game->mlx_pointer, game->mlx_win_pointer);
+	while (i < game->map_height - 1)
+		free(game->map[i++]);
+	free(game->map);
+	(void) key;
+	exit(0);
 	return (0);
 }
+
+int	game_controls(int key, t_game *game)
+{
+	if(key == XK_Escape)
+		exit_game(key, game);
+	return(0);
+}
+

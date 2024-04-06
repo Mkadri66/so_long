@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/03 00:52:04 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/06 04:00:27 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	verify_is_map_rectangular(t_game *game)
 	i = 0;
 	while (i < game->map_height)
 	{
-		if ((ft_strlen(game->map[0]) - 1) == game->map_height)
+		if ((int)(ft_strlen(game->map[0]) - 1) == game->map_height)
 		{
 			perror("Map cannot be a square");
 			exit(0);
