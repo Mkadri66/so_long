@@ -100,6 +100,5 @@ void    game_init(t_game *game)
     game->mlx_win_pointer = mlx_new_window(game->mlx_pointer, (game->map_width * 50), (game->map_height * 50), "So_Long");
     set_images_in_map(game);
     display_sprites(game);
-    print_game_info(game);
-    mlx_loop(game->mlx_pointer);
+    //print_game_info(game);
 }
