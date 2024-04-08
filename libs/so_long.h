@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/06 03:46:40 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/08 00:42:12 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct t_game
 	int		exit_count;
 	int		x;
 	int		y;
+	int		movement;
 
 	void	*mlx_pointer;
 	void	*mlx_win_pointer;
@@ -39,6 +40,7 @@ typedef struct t_game
 	void	*collectables;
 	void	*walls;
 	void	*exit;
+	char	**original_map;
 }	t_game;
 
 int		verify_map_extension(char *map_path);
@@ -46,6 +48,7 @@ int		verif_args(int argc, char *path_map);
 char	**parsing_map(char *argv, t_game *game);
 void	*ft_memset(void *array, int value, size_t count);
 char	*ft_strdup(const char *str);
+void	arg_error();
 int		verify_map(t_game *game);
 int		count_content(t_game *game);
 int		map_content(t_game *game);
@@ -53,6 +56,8 @@ int		count_check(t_game *game);
 int		body_map_walls(t_game *game);
 
 void	game_init(t_game *game);
-int	game_controls(int key, t_game *game);
-
+int		game_controls(int key, t_game *game);
+int		exit_game(int key, t_game *game);
+void	print_game_info(t_game *game);
+void	display_sprites(t_game *game);
 #endif

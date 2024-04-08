@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:49 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/06 04:01:02 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/08 00:44:08 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,9 @@ int	verify_map_extension(char *map_path)
       exit (1);
     }
     return (1);
+}
+
+void    arg_error()
+{
+    perror("Only two arguments : ./so_long and a map");
 }

@@ -1,39 +1,5 @@
 #include "so_long.h"
 
-void print_game_info(t_game *game)
-{
-    printf("===== Game Information =====\n");
-    printf("fd: %d\n", game->fd);
-    printf("map_width: %d\n", game->map_width);
-    printf("map_height: %d\n", game->map_height);
-    printf("player_count: %d\n", game->player_count);
-    printf("collectable_count: %d\n", game->collectable_count);
-    printf("exit_count: %d\n", game->exit_count);
-    printf("x: %d\n", game->x);
-    printf("y: %d\n", game->y);
-
-    printf("mlx_pointer: %p\n", game->mlx_pointer);
-    printf("mlx_win_pointer: %p\n", game->mlx_win_pointer);
-    printf("player: %p\n", game->player);
-    printf("floor: %p\n", game->floor);
-    printf("collectables: %p\n", game->collectables);
-    printf("walls: %p\n", game->walls);
-    printf("exit: %p\n", game->exit);
-}
-
-void print_map(t_game *game)
-{
-    printf("===== Map =====\n");
-    for (int i = 0; i < game->map_height; i++)
-    {
-        for (int j = 0; game->map[i][j]; j++)
-        {
-            printf("%c ", game->map[i][j]);
-        }
-        printf("\n");
-    }
-}
-
 void	display_player(t_game *game, int height, int width)
 {
 	mlx_put_image_to_window(game->mlx_pointer,game->mlx_win_pointer, game->player, width * 50, height * 50);
@@ -93,12 +59,12 @@ void display_sprites(t_game *game)
     }
 }
 
-
 void    game_init(t_game *game)
 {
     game->mlx_pointer = mlx_init();
     game->mlx_win_pointer = mlx_new_window(game->mlx_pointer, (game->map_width * 50), (game->map_height * 50), "So_Long");
     set_images_in_map(game);
     display_sprites(game);
+    game->movement = 0;
     //print_game_info(game);
 }

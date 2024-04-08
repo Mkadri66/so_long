@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:27:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/06 03:52:16 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/08 00:41:50 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,10 @@ int	main(int argc, char **argv)
 	t_game		game;
 
 	if (argc != 2)
+	{
+		arg_error();
 		return (0);
+	}
 	verify_map_extension(argv[1]);
 	parsing_map(argv[1], &game);
 	verify_map(&game);
