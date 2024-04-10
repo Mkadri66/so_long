@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   game_display.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 01:57:06 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/10 02:31:42 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:05:19 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,4 @@ void	display_sprites(t_game *game)
 		}
 		height++;
 	}
-}
-
-void	game_init(t_game *game)
-{
-	game->mlx_pointer = mlx_init();
-	game->mlx_win_pointer = mlx_new_window(game->mlx_pointer, (game->map_width * 50), (game->map_height * 50), "So_Long");
-	set_images_in_map(game);
-	display_sprites(game);
-	game->movement = 0;
 }

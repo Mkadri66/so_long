@@ -6,12 +6,11 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:42:54 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/10 02:26:45 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:06:22 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <X11/keysym.h>
 
 void	move_left(t_game *game)
 {
@@ -120,24 +119,5 @@ int	exit_game(int key, t_game *game)
 	free(game->map);
 	(void) key;
 	exit(0);
-	return (0);
-}
-
-int	game_controls(int key, t_game *game)
-{
-	if (key == XK_Escape || key == XK_Cancel)
-		exit_game(key, game);
-	else if (key == XK_Left)
-		move_left(game);
-	else if (key == XK_Right)
-		move_right(game);
-	else if (key == XK_Up)
-		move_up(game);
-	else if (key == XK_Down)
-		move_down(game);
-	mlx_clear_window(game->mlx_pointer, game->mlx_win_pointer);
-	display_sprites(game);
-	mlx_do_sync(game->mlx_pointer);
-	printf("Movements : %d \n", game->movement);
 	return (0);
 }

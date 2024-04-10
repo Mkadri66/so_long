@@ -70,7 +70,8 @@ int	count_content(t_game *game)
 
 int	count_check(t_game *game)
 {
-	if(!(game->player_count == 1 && game->exit_count == 1 && game->collectable_count >= 1))
+	if (! (game->player_count == 1
+			&& game->exit_count == 1 && game->collectable_count >= 1))
 	{
 		perror("Map is incorrect");
 		exit(1);

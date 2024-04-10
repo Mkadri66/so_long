@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/06 04:00:27 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:42:09 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,6 @@ int	body_map_walls(t_game *game)
 	return (1);
 }
 
-
 char	**parsing_map(char *argv, t_game *game)
 {
 	char	*line;
@@ -97,10 +96,10 @@ char	**parsing_map(char *argv, t_game *game)
 		free(line);
 		i++;
 	}
-	if(!game->map)
+	if (!game->map)
 	{
 		free(game);
-		return(0);
+		return (0);
 	}
 	game->map_height = i;
 	game->map[i] = NULL;

@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 18:27:51 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/08 00:41:50 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:19:13 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "./libs/so_long.h"
 #include "get_next_line/get_next_line.h"
@@ -20,7 +19,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		arg_error();
+		arg_error(&game);
 		return (0);
 	}
 	verify_map_extension(argv[1]);

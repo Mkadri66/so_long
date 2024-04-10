@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/08 00:42:12 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/10 19:19:03 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		verif_args(int argc, char *path_map);
 char	**parsing_map(char *argv, t_game *game);
 void	*ft_memset(void *array, int value, size_t count);
 char	*ft_strdup(const char *str);
-void	arg_error();
+void	arg_error(t_game *game);
 int		verify_map(t_game *game);
 int		count_content(t_game *game);
 int		map_content(t_game *game);
@@ -59,5 +59,16 @@ void	game_init(t_game *game);
 int		game_controls(int key, t_game *game);
 int		exit_game(int key, t_game *game);
 void	print_game_info(t_game *game);
+void	move_left(t_game *game);
+void	move_right(t_game *game);
+void	move_up(t_game *game);
+void	move_down(t_game *game);
+void	display_player(t_game *game, int height, int width);
+void	display_collectable(t_game *game, int height, int width);
 void	display_sprites(t_game *game);
+void	display_sprite(t_game *game, void *sprite, int width, int height);
+void	set_images_in_map(t_game *game);
+
+int		ft_printf(const char *str, ...);
+
 #endif
