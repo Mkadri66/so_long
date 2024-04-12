@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/10 19:19:03 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/12 15:05:23 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct t_game
 }	t_game;
 
 int		verify_map_extension(char *map_path);
+int		verify_file_exist(char *file_path);
 int		verif_args(int argc, char *path_map);
 char	**parsing_map(char *argv, t_game *game);
 void	*ft_memset(void *array, int value, size_t count);

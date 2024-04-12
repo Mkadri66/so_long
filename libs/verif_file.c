@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:49 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/10 19:19:53 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/12 15:06:17 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,18 @@ char	*ft_strstr(char *str, char *to_find)
 	}
 	return (0);
 }
+int	verify_file_exist(char *file_path)
+{
+	int fd;
+	fd = open(file_path, O_RDONLY);
 
+	if (fd < 0) {
+		ft_printf("Invalide file : %s\n", file_path);
+		close(fd);
+		return (0);
+	}
+	return (1);
+}
 int	verify_map_extension(char *map_path)
 {
 	char	*extension;
