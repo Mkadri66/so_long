@@ -33,18 +33,21 @@ char	*ft_strstr(char *str, char *to_find)
 	}
 	return (0);
 }
+
 int	verify_file_exist(char *file_path)
 {
-	int fd;
-	fd = open(file_path, O_RDONLY);
+	int	fd;
 
-	if (fd < 0) {
+	fd = open(file_path, O_RDONLY);
+	if (fd < 0)
+	{
 		ft_printf("Invalide file : %s\n", file_path);
 		close(fd);
 		return (0);
 	}
 	return (1);
 }
+
 int	verify_map_extension(char *map_path)
 {
 	char	*extension;

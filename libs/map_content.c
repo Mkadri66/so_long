@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_content.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 01:14:54 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/02 02:35:31 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/15 00:28:25 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	map_content(t_game *game)
 				&& game->map[i][j] != 'C' && game->map[i][j] != 'E')
 			{
 				perror("Map is incorrect (must contain only : 1,0,P,C,E)");
-				return (0);
+				exit(0);
 			}
 			j++;
 		}
