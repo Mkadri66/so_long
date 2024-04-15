@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mkadri <marvin@42.fr>                      +#+  +:+       +#+         #
+#    By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/18 16:05:49 by mkadri            #+#    #+#              #
-#    Updated: 2024/04/10 19:12:05 by mkadri           ###   ########.fr        #
+#    Updated: 2024/04/15 15:05:41 by mkadri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 SRCS = main.c $(wildcard ./libs/*.c) $(wildcard get_next_line/*.c) $(wildcard ft_printf/*.c)
 OBJS = $(SRCS:.c=.o)
-CC = gcc
-CFLAGS = -Wall -Wextra -Werror -I./mlx -I./mlx_linux -I/usr/X11/include
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -I./mlx -I./mlx_linux -I/usr/X11/include -g
 LDFLAGS = -Lmlx -lmlx -L./get_next_line -L/usr/X11/lib -lX11 -lXext -lm
 
 UNAME := $(shell uname)

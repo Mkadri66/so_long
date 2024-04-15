@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:49 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/12 15:06:17 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/15 16:09:28 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,14 @@ int	verify_map_extension(char *map_path)
 		exit (1);
 	}
 	return (1);
+}
+
+void 	map_height_length(char *map_path, t_game *game)
+{
+	game->fd = open(map_path, O_RDONLY);
+	while (get_next_line(game->fd) != NULL)
+		game->map_height++;
+	
 }
 
 void	arg_error(t_game *game)
