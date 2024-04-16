@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/16 00:54:54 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/16 18:39:17 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,14 @@ int	verify_is_map_rectangular(t_game *game)
 	i = 0;
 	while (i < game->map_height)
 	{
-		if ((int)(ft_strlen(game->map[0]) - 1) == game->map_height)
+		if ((int)(ft_strlen(game->map[0])) == game->map_height)
 		{
 			perror("Map cannot be a square");
 			exit(0);
 		}
 		i++;
 	}
-	game->map_width = ft_strlen(game->map[0]) - 1;
+	game->map_width = ft_strlen(game->map[0]);
 	return (1);
 }
 
@@ -36,7 +36,7 @@ int	top_bottom_walls(t_game *game)
 	int	i;
 
 	i = 0;
-	while (game->map[0][i] != '\n')
+	while (game->map[0][i] != '\0')
 	{
 		if (game->map[0][i] != '1')
 		{
@@ -65,7 +65,7 @@ int	body_map_walls(t_game *game)
 	int	right_wall;
 
 	i = 1;
-	right_wall = ft_strlen(game->map[1]) - 2;
+	right_wall = ft_strlen(game->map[1]) - 1;
 	while (i < game->map_height - 1)
 	{
 		if (game->map[i][0] != '1' || game->map[i][right_wall] != '1')

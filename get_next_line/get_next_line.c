@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/01 20:25:46 by mkadri            #+#    #+#             */
-/*   Updated: 2024/02/23 22:49:38 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/16 18:37:38 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,18 +46,13 @@ char	*make_line(char *temp)
 		return (NULL);
 	while (temp[i] != '\n' && temp[i] != '\0')
 		i++;
-	line = (char *) malloc((i + 2) * sizeof(char));
+	line = (char *) malloc((i + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
 	i = 0;
 	while (temp[i] != '\n' && temp[i] != '\0')
 	{
 		line[i] = temp[i];
-		i++;
-	}
-	if (temp[i] == '\n')
-	{
-		line[i] = '\n';
 		i++;
 	}
 	line[i] = '\0';

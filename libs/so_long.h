@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/15 16:09:51 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/16 18:31:15 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <stdio.h>
 # include <fcntl.h>
+# include <stdbool.h>
 
 typedef struct t_game
 {
@@ -40,7 +41,6 @@ typedef struct t_game
 	void	*collectables;
 	void	*walls;
 	void	*exit;
-	char	**original_map;
 }	t_game;
 
 int		verify_map_extension(char *map_path);
