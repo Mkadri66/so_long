@@ -6,11 +6,12 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/10 19:42:09 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/16 00:54:54 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdbool.h>
 
 int	verify_is_map_rectangular(t_game *game)
 {
@@ -84,25 +85,22 @@ char	**parsing_map(char *argv, t_game *game)
 	int		i;
 
 	game->map = (char **) malloc(sizeof(char *) * (game->map_height + 1));
+	game->map[game->map_height] = NULL;
 	if (!game->map)
 		return (NULL);
 	game->fd = open(argv, O_RDONLY);
 	if (game->fd < 0)
 		return (NULL);
 	i = 0;
-	while ((line = get_next_line(game->fd)) != NULL)
+	while (true)
 	{
+		line = get_next_line(game->fd);
+		if(!line)
+			break;
 		game->map[i] = ft_strdup(line);
 		free(line);
 		i++;
 	}
-	if (!game->map)
-	{
-		free(game);
-		return (0);
-	}
-	game->map_height = i;
-	game->map[i] = NULL;
 	close(game->fd);
 	return (game->map);
 }
