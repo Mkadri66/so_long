@@ -6,13 +6,18 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 19:05:08 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/10 19:10:52 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/17 16:54:29 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <X11/keysym.h>
 
+
+void	cross_exit(t_game *game)
+{
+	mlx_hook(game->mlx_win_pointer,17, 0, exit_game, game);
+}
 void	game_init(t_game *game)
 {
 	game->mlx_pointer = mlx_init();
@@ -25,6 +30,7 @@ void	game_init(t_game *game)
 
 int	game_controls(int key, t_game *game)
 {
+	printf("key %d \n", key);
 	if (key == XK_Escape || key == XK_Cancel)
 		exit_game(key, game);
 	else if (key == XK_Left)
@@ -41,3 +47,4 @@ int	game_controls(int key, t_game *game)
 	ft_printf("Movements : %d \n", game->movement);
 	return (0);
 }
+
