@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 16:18:49 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/16 18:12:42 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/19 22:37:27 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,6 @@ void 	map_height_length(char *map_path, t_game *game)
 	
 	i = 0;
 	game->fd = open(map_path, O_RDONLY);
-	// while (get_next_line(game->fd) != NULL)
-	// {
-	// 	game->map_height++;
-	// }
 	while (true)
 	{
 		line = get_next_line(game->fd);
@@ -83,6 +79,7 @@ void 	map_height_length(char *map_path, t_game *game)
 		free(line);
 		i++;
 	}
+	(void) i;
 }
 
 void	arg_error(t_game *game)

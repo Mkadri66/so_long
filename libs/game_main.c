@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 19:05:08 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/17 16:54:29 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/19 22:38:18 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ void	game_init(t_game *game)
 
 int	game_controls(int key, t_game *game)
 {
-	printf("key %d \n", key);
 	if (key == XK_Escape || key == XK_Cancel)
 		exit_game(key, game);
 	else if (key == XK_Left)
