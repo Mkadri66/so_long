@@ -6,22 +6,12 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 19:05:08 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/26 14:49:42 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/26 18:59:55 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 #include <X11/keysym.h>
-
-void	cross_exit(t_game *game)
-{
-	int	i;
-	
-	i = 0;
-	while (i < game->map_height)
-		free(game->map[i++]);
-	mlx_hook(game->mlx_win_pointer, 17, 0, exit_game, game);
-}
 
 void	game_init(t_game *game)
 {
@@ -36,7 +26,7 @@ void	game_init(t_game *game)
 int	game_controls(int key, t_game *game)
 {
 	if (key == XK_Escape || key == XK_Cancel)
-		exit_game(key, game);
+		exit_game(game);
 	else if (key == XK_Left)
 		move_left(game);
 	else if (key == XK_Right)

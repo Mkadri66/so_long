@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_utilis.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mkadri <mkadri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/19 14:06:24 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/07 23:18:07 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/26 17:58:57 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ char	*ft_strdup(const char *str)
 		str_copy[i] = str[i];
 		i++;
 	}
-	str_copy[i] = '\0';
+	str_copy[i] = 0;
 	return (str_copy);
 }

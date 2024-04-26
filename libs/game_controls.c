@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:42:54 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/26 14:54:39 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/26 19:00:09 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	move_left(t_game *game)
 			return ;
 		if (left_box == 'E' && game->collectable_count == 0)
 		{
-			exit_game(0, game);
+			exit_game(game);
 		}
 		game->map[game->y][game->x] = '0';
 		game->x -= 1;
@@ -51,7 +51,7 @@ void	move_right(t_game *game)
 			return ;
 		if (right_box == 'E' && game->collectable_count == 0)
 		{
-			exit_game(0, game);
+			exit_game(game);
 		}
 		game->map[game->y][game->x] = '0';
 		game->x += 1;
@@ -75,7 +75,7 @@ void	move_up(t_game *game)
 			return ;
 		if (up_box == 'E' && game->collectable_count == 0)
 		{
-			exit_game(0, game);
+			exit_game(game);
 		}
 		game->map[game->y][game->x] = '0';
 		game->y -= 1;
@@ -99,7 +99,7 @@ void	move_down(t_game *game)
 			return ;
 		if (down_box == 'E' && game->collectable_count == 0)
 		{
-			exit_game(0, game);
+			exit_game(game);
 		}
 		game->map[game->y][game->x] = '0';
 		game->y += 1;
@@ -108,10 +108,22 @@ void	move_down(t_game *game)
 	}
 }
 
-int	exit_game(int key, t_game *game)
+int	exit_game(t_game *game)
 {
-	(void) key;
-	(void) game;
+	int	i;
+
+	i = 0;
+	while (i < game->map_height)
+		free(game->map[i++]);
+	free(game->map);
+	mlx_destroy_image(game->mlx_pointer, game->floor);
+	mlx_destroy_image(game->mlx_pointer, game->collectables);
+	mlx_destroy_image(game->mlx_pointer, game->player);
+	mlx_destroy_image(game->mlx_pointer, game->walls);
+	mlx_destroy_image(game->mlx_pointer, game->exit);
+	mlx_destroy_window(game->mlx_pointer, game->mlx_win_pointer);
+	mlx_destroy_display(game->mlx_pointer);
+	free(game->mlx_pointer);
 	exit(0);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 18:34:28 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/26 14:26:21 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/26 18:24:53 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,7 @@ int		body_map_walls(t_game *game);
 
 void	game_init(t_game *game);
 int		game_controls(int key, t_game *game);
-void	cross_exit(t_game *game);
-int		exit_game(int key, t_game *game);
+int		exit_game(t_game *game);
 void	print_game_info(t_game *game);
 void	move_left(t_game *game);
 void	move_right(t_game *game);
