@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 19:05:08 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/26 14:30:04 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/26 14:49:42 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 void	cross_exit(t_game *game)
 {
+	int	i;
+	
+	i = 0;
+	while (i < game->map_height)
+		free(game->map[i++]);
 	mlx_hook(game->mlx_win_pointer, 17, 0, exit_game, game);
 }
 

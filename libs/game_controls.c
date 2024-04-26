@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 03:42:54 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/17 22:57:03 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/26 14:54:39 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,15 +110,8 @@ void	move_down(t_game *game)
 
 int	exit_game(int key, t_game *game)
 {
-	int	i;
-
-	i = 0;
-	mlx_destroy_window(game->mlx_pointer, game->mlx_win_pointer);
-	while (i < game->map_height)
-		free(game->map[i++]);
-	mlx_loop_end(game->mlx_pointer);
-	free(game->map);
 	(void) key;
+	(void) game;
 	exit(0);
 	return (0);
 }
