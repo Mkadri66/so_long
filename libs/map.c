@@ -6,7 +6,7 @@
 /*   By: mkadri <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 19:11:36 by mkadri            #+#    #+#             */
-/*   Updated: 2024/04/16 18:39:17 by mkadri           ###   ########.fr       */
+/*   Updated: 2024/04/26 14:23:13 by mkadri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,8 @@ char	**parsing_map(char *argv, t_game *game)
 	while (true)
 	{
 		line = get_next_line(game->fd);
-		if(!line)
-			break;
+		if (!line)
+			break ;
 		game->map[i] = ft_strdup(line);
 		free(line);
 		i++;
